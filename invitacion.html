@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Confirmada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9f7fe 0%, #e6e3f8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            padding: 40px;
+        }
+        
+        .header {
+            background: linear-gradient(120deg, #6a5af9 0%, #d66efd 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            margin: -40px -40px 40px -40px;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .confirmation-icon {
+            font-size: 5rem;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        
+        .confirmation-message {
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+        
+        .confirmation-message h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .confirmation-details {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+            border-left: 4px solid #6a5af9;
+        }
+        
+        .confirmation-details p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+        
+        .confirmation-details strong {
+            color: #6a5af9;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background: linear-gradient(120deg, #6a5af9 0%, #d66efd 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(106, 90, 249, 0.3);
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 90, 249, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            background: #fafbff;
+            margin: 40px -40px -40px -40px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+                margin: -20px -20px 20px -20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>¡Invitación Confirmada!</h1>
+        </div>
+        
+        <div class="confirmation-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        
+        <div class="confirmation-message">
+            <h2>¡Gracias por confirmar tu asistencia!</h2>
+            <p>Estamos emocionados de compartir este momento especial contigo.</p>
+        </div>
+        
+        <div class="confirmation-details" id="invitation-details">
+            <!-- Los detalles de la invitación se mostrarán aquí -->
+        </div>
+        
+        <a href="#" class="btn-back" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i> Volver al formulario
+        </a>
+        
+        <div class="footer">
+            <p>© 2025 Evento Especial | Todos los derechos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('guest') || 'Invitado';
+            const companionName = urlParams.get('companion');
+            
+            // Construir el mensaje de confirmación
+            let detailsHTML = `
+                <p><strong>Invitado principal:</strong> ${decodeURIComponent(guestName)}</p>
+            `;
+            
+            if (companionName) {
+                detailsHTML += `<p><strong>Acompañante:</strong> ${decodeURIComponent(companionName)}</p>`;
+            } else {
+                detailsHTML += `<p><strong>Acompañante:</strong> Sin acompañante</p>`;
+            }
+            
+            detailsHTML += `
+                <p><strong>Fecha del evento:</strong> 15 de Agosto, 2025</p>
+                <p><strong>Hora:</strong> 19:00 horas</p>
+                <p><strong>Lugar:</strong> Salón de Eventos "Las Estrellas"</p>
+                <p><strong>Dirección:</strong> Av. Principal 1234, Ciudad</p>
+            `;
+            
+            // Mostrar los detalles
+            document.getElementById('invitation-details').innerHTML = detailsHTML;
+        });
+    </script>
+</body>
+</html>
