@@ -394,9 +394,9 @@
         <div class="wedding-header">
             <h1 class="wedding-title display-4">Nuestra Boda</h1>
             <div class="couple-names display-5">
-                Ana <span class="wedding-icon">❤</span> Carlos
+                Oscar <span class="wedding-icon">❤</span> Sol
             </div>
-            <p class="gold-text h5">15 de Octubre, 2025</p>
+            <p class="gold-text h5">31 de Octubre, 2025</p>
             
             <div class="wedding-decoration">
                 <div class="decoration-item"></div>
@@ -408,7 +408,7 @@
         </div>
         
         <div class="wedding-message lead">
-            <p>Por favor confirma tu asistencia a nuestro día especial</p>
+            <p>Haz sido invitado a nuestro día especial</p>
         </div>
         
         <div class="container">
@@ -441,7 +441,7 @@
             
             <form id="attendance-form" class="px-2">
                 <div class="mb-4">
-                    <label for="guest-name" class="form-label"><i class="fas fa-user me-2"></i>Tu Nombre</label>
+                    <label for="guest-name" class="form-label" style="color: #d4af37;"><i class="fas fa-user me-2"></i>Tu Nombre</label>
                     <div class="input-with-icon">
                         <i class="fas fa-user"></i>
                         <input type="text" id="guest-name" class="form-control form-control-lg" placeholder="Ingresa tu nombre completo" required>
@@ -449,7 +449,7 @@
                 </div>
                 
                 <div class="mb-4">
-                    <label for="companion-name" class="form-label"><i class="fas fa-user-friends me-2"></i>Nombre de tu acompañante (opcional)</label>
+                    <label for="companion-name" class="form-label"  style="color: #d4af37;"><i class="fas fa-user-friends me-2"></i>Nombre de tu acompañante (opcional)</label>
                     <div class="input-with-icon">
                         <i class="fas fa-user-friends"></i>
                         <input type="text" id="companion-name" class="form-control form-control-lg" placeholder="Nombre completo de tu acompañante">
@@ -457,15 +457,15 @@
                 </div>
                 
                 <button type="submit" class="btn-submit btn-lg" id="submit-button">
-                    <span id="button-text">Confirmar Asistencia</span>
-                    <i class="fas fa-heart"></i>
+                    <span id="button-text" >Confirmar invitados</span>
+                    <i class="fas fa-heart"  style="color: #d4af37;"></i>
                 </button>
             </form>
         </div>
         
         <div class="wedding-footer">
             <p class="mb-1">Con la bendición de nuestras familias</p>
-            <p class="mb-0">© 2025 Ana & Carlos | Unidos en amor eterno</p>
+            <p class="mb-0">© 2025 Oscar & Sol | Unidos en amor eterno</p>
         </div>
     </div>
 
@@ -538,7 +538,7 @@
             // Contador regresivo para la boda
             function updateCounter() {
                 // Fecha de la boda: 15 de octubre de 2025
-                const eventDate = new Date('2025-10-15T16:00:00');
+                const eventDate = new Date('2025-10-31T16:00:00');
                 const now = new Date();
                 const diff = eventDate - now;
                 
