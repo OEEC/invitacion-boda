@@ -1,0 +1,85 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .fleur-de-leah-regular {
+        font-family: "Fleur De Leah", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .kings-regular {
+        font-family: "Kings", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #f8e3c5 0%, #e6c9a8 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Decoración otoñal para boda */
+    .falling-item {
+        position: absolute;
+        font-size: 1.8rem;
+        opacity: 0.6;
+        z-index: 0;
+        animation: fall linear infinite;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        pointer-events: none;
+    }
+    
+    @keyframes fall {
+        to { 
+            transform: translateY(100vh) rotate(360deg); 
+            opacity: 0;
+        }
+    }
+
+    /* ...existing code... */
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.background-image {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('../img/couple.png'); /* Cambia por tu imagen */
+    background-size: contain; /* Cambia cover por contain */
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: filter 1.5s ease;
+    z-index: 1;
+}
+.background-image.blurred {
+    filter: blur(8px) brightness(0.7);
+}
+.overlay-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.overlay-text.visible {
+    opacity: 1;
+}
