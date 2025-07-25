@@ -103,9 +103,11 @@
         opacity: 0;
         transition: opacity 1s ease;
     }
+
     .overlay-text h1, .overlay-text p {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    
     .overlay-text.visible {
         opacity: 1;
     }
