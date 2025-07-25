@@ -79,12 +79,13 @@
         text-align: center;
         color: #d4af37;
         z-index: 2;
+        font-size: 300;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
 
     .overlay-text p {
-        font-size: 25px;
+        font-size: 20px;
         margin: 0;
     }
 
