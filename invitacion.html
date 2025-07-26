@@ -6,10 +6,10 @@
     <title>Oscar & Sol - 31 de Octubre 2024</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Kings&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Kings&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #f8f0e5;
@@ -102,6 +102,8 @@
 
         /* Hero Section con imagen centrada */
         .hero {
+            padding-top: 2%;
+            padding-bottom: 2%;
             position: relative;
             width: 100%;
             height: 100vh;
@@ -125,6 +127,7 @@
             background: url('https://invitacion-boda-ax2.pages.dev/resources/img/couple.png') center/contain no-repeat;
             z-index: 1;
             opacity: 1;
+            filter: blur(1px) brightness(0.5);
         }
 
         /* Contenido sobre la imagen */
@@ -187,33 +190,47 @@
             right: -30px;
         }
                 
-        /* Navbar */
+        /* Navbar - CORRECCIÓN PRINCIPAL */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            position: sticky;
+            background: #fff;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
+
         .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
         }
-        
+
+        .navbar-logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #d4af37;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
         .nav-menu {
-            display: flex;
             list-style: none;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: flex;
+            gap: 1.5rem;
         }
-        
-        .nav-menu li {
-            margin: 0 10px;
-        }
-        
-        .nav-menu a {
+
+        .nav-menu li a {
             text-decoration: none;
             color: var(--dark-color);
             font-weight: 500;
@@ -224,12 +241,13 @@
             border-radius: 20px;
         }
         
-        .nav-menu a:hover, .nav-menu a.active {
+        .nav-menu li a:hover, 
+        .nav-menu li a.active {
             background: var(--accent-color);
             color: white;
         }
         
-        .nav-menu a::after {
+        .nav-menu li a::after {
             content: "";
             position: absolute;
             bottom: 0;
@@ -241,7 +259,7 @@
             transition: all 0.3s ease;
         }
         
-        .nav-menu a:hover::after {
+        .nav-menu li a:hover::after {
             width: 70%;
         }
         
@@ -654,22 +672,46 @@
         
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
-            
+
             .hero-date {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+                letter-spacing: 4px;
+                padding: 8px 20px;
             }
-            
-            .hero-image {
-                width: 400px;
-                height: 392px;
+
+            .hero-date::before,
+            .hero-date::after {
+                font-size: 1rem;
+                left: -20px;
+                right: -20px;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #fff;
+                width: 100%;
+                padding: 1rem 2rem;
+                gap: 0.5rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
             }
             
             .timeline::after {
                 left: 31px;
             }
-            
+
             .timeline-item {
                 width: 100%;
                 padding-left: 70px;
@@ -682,28 +724,18 @@
         }
         
         @media (max-width: 576px) {
-            .nav-menu {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-menu li {
-                margin: 5px 0;
-            }
-            
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
-            
+
             .hero-date {
-                font-size: 1.5rem;
-                letter-spacing: 3px;
-                padding: 5px 15px;
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+                padding: 6px 15px;
             }
-            
-            .hero-image {
-                width: 300px;
-                height: 294px;
+
+            .hero-content {
+                padding: 0 10px;
             }
             
             .section-title h2 {
@@ -738,16 +770,19 @@
         <div class="hero-image"></div>
         <div class="hero-content">
             <h1 class="hero-title fleur-de-leah-regular">Oscar <span class="amp">&</span> Sol</h1>
-            <div class="hero-date kings-regular">31 DE OCT 2024</div>
+            <div class="hero-date kings-regular">31 DE OCT 2025</div>
         </div>
     </div>
 </section>
 
-    <!-- Navbar -->
+    <!-- Navbar - CORREGIDA -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <ul class="nav-menu">
-                <li><a href="#cuenta-regresiva" class="active">Cuenta Regresiva</a></li>
+        <div class="nav-container">
+            <a href="#inicio" class="navbar-logo">Oscar & Sol</a>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#cuenta-regresiva">Cuenta Regresiva</a></li>
                 <li><a href="#nuestra-historia">Nuestra Historia</a></li>
                 <li><a href="#recepcion">Recepción</a></li>
                 <li><a href="#vestimenta">Vestimenta</a></li>
@@ -814,12 +849,12 @@
                     <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Lugar de la recepción">
                 </div>
                 <div class="reception-details">
-                    <h3>Hacienda Santa María</h3>
-                    <p><i class="fas fa-calendar-alt reception-icon"></i> Sábado, 31 de Octubre de 2024</p>
-                    <p><i class="fas fa-clock reception-icon"></i> 18:00 horas</p>
-                    <p><i class="fas fa-map-marker-alt reception-icon"></i> Carretera Sevilla-Utrera, km 12</p>
-                    <p><i class="fas fa-phone reception-icon"></i> +34 123 456 789</p>
-                    <a href="https://goo.gl/maps/example" class="map-btn" target="_blank">Ver en mapa</a>
+                    <h3>Quinta San Eduardo</h3>
+                    <p><i class="fas fa-calendar-alt reception-icon"></i> Sábado, 31 de Octubre de 2025</p>
+                    <p><i class="fas fa-clock reception-icon"></i> 20:00 horas</p>
+                    <p><i class="fas fa-map-marker-alt reception-icon"></i> Calz Cuauhtemoc 444, Tercero de Cobián Centro, Torreón, Coah.</p>
+                    <p><i class="fas fa-phone reception-icon"></i>+52 871 713 1743</p>
+                    <a href="https://maps.app.goo.gl/8MoNTDikzoHW9xK86" class="map-btn" target="_blank">Ver en mapa</a>
                 </div>
             </div>
         </div>
@@ -834,24 +869,44 @@
             </div>
             <div class="colors-container">
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #d2b48c;"></div>
+                    <div class="color-sample" style="background-color: #DCCAA8;"></div>
+                    <div class="color-name">Arena</div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background-color: #ADD8E6;"></div>
+                    <div class="color-name">Azul claro</div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background-color: #000080;"></div>
+                    <div class="color-name">Azul marino clásico</div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background-color: #1A237E ;"></div>
+                    <div class="color-name">Azul marino suave</div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background-color: #F5F5DC;"></div>
                     <div class="color-name">Beige</div>
                 </div>
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #eaddd0;"></div>
-                    <div class="color-name">Marrón claro</div>
+                    <div class="color-sample" style="background-color: #A67B5B;"></div>
+                    <div class="color-name">Café claro</div>
                 </div>
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #9c786c;"></div>
-                    <div class="color-name">Terra cotta</div>
+                    <div class="color-sample" style="background-color: #D4A017;"></div>
+                    <div class="color-name">Mostaza</div>
                 </div>
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #5d4037;"></div>
-                    <div class="color-name">Marrón oscuro</div>
+                    <div class="color-sample" style="background-color: #000000;"></div>
+                    <div class="color-name">Negro</div>
                 </div>
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #f5f1ec;"></div>
-                    <div class="color-name">Blanco roto</div>
+                    <div class="color-sample" style="background-color: #FFA07A;"></div>
+                    <div class="color-name">Salmón claro</div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background-color: #E2725B;"></div>
+                    <div class="color-name">Terracota</div>
                 </div>
             </div>
             <div class="dress-code-note">
@@ -871,44 +926,65 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">18:00</div>
-                        <h4>Llegada de invitados</h4>
-                        <p>Recepción con cóctel de bienvenida</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-time">19:00</div>
-                        <h4>Ceremonia</h4>
-                        <p>Unión bajo el arco floral</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
                         <div class="timeline-time">20:00</div>
-                        <h4>Sesión de fotos</h4>
-                        <p>Mientras disfrutan del aperitivo</p>
+                        <h4>Llegada de invitados</h4>
+                        <p> Recepción de invitados para ceremonia</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">20:15</div>
+                        <h4>Ceremonia</h4>
+                        <p>Ceremonia civil en jardín (firma de acta, votos)</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-time">21:00</div>
-                        <h4>Banquete</h4>
-                        <p>Cena de 4 tiempos con maridaje</p>
+                        <h4>Entrada especial</h4>
+                        <p>Entrada de los novios a la recepción</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">23:00</div>
-                        <h4>Brindis y pastel</h4>
-                        <p>Momentos emotivos y dulces</p>
+                        <div class="timeline-time">21:10</div>
+                        <h4>Primer baile</h4>
+                        <p> Primer baile de los novios</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">00:00</div>
+                        <div class="timeline-time">21:30</div>
+                        <h4>Brindis, Banquete y Pastel</h4>
+                        <p>Brindis de agradecimiento, cena y corte del pastel</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">22:30</div>
+                        <h4>Abrimos pista de Baile</h4>
+                        <p>Baile con todos</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">24:00</div>
+                        <h4>Ramo y liga</h4>
+                        <p> Ramo y liga</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">24:15</div>
                         <h4>Fiesta</h4>
-                        <p>¡Baile hasta el amanecer!</p>
+                        <p>Fiesta total hasta las 1:55 am</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">2:00</div>
+                        <h4>Despedida</h4>
+                        <p>Cierre de la fiesta</p>
                     </div>
                 </div>
             </div>
@@ -976,128 +1052,130 @@
                 ❤ ❤ ❤
             </div>
             <p class="footer-text">Con amor, Oscar y Sol</p>
-            <p>31 de Octubre de 2024 · Hacienda Santa María</p>
-            <p>contacto@oscarysol2024.com · +34 123 456 789</p>
+            <p>31 de Octubre de 2025 · Hacienda Santa María</p>
+            <p>contacto@oscarysol2025.com · +34 123 456 789</p>
             <div class="copyright">
-                &copy; 2024 Oscar & Sol · Todos los derechos reservados
+                &copy; 2025 Oscar & Sol · Todos los derechos reservados
             </div>
         </div>
     </footer>
 
-    <script>
-        // Crear elementos cayendo dinámicamente
-        function createFallingItems() {
-            const container = document.querySelector('.falling-background');
-            const symbols = ['🍁', '🍂', '💍', '🥂'];
-            
-            for (let i = 0; i < 15; i++) {
-                const item = document.createElement('div');
-                item.className = 'falling-item';
-                item.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-                
-                // Posición aleatoria
-                const left = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = 15 + Math.random() * 15;
-                
-                item.style.left = `${left}%`;
-                item.style.top = `-${Math.random() * 20}%`;
-                item.style.animationDuration = `${duration}s`;
-                item.style.animationDelay = `${delay}s`;
-                
-                container.appendChild(item);
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // 🌐 Navbar toggle (versión móvil)
+    const toggle = document.getElementById("navbar-toggle");
+    const menu = document.getElementById("nav-menu");
+    const links = menu.querySelectorAll("a");
+
+    toggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+
+    // Cierra el menú al hacer clic en un enlace (solo en móvil)
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+                menu.classList.remove("active");
             }
+        });
+    });
+
+    // 🍁 Elementos cayendo dinámicamente
+    function createFallingItems() {
+        const container = document.querySelector('.falling-background');
+        const symbols = ['🍁', '🍂', '💍', '🥂'];
+
+        for (let i = 0; i < 15; i++) {
+            const item = document.createElement('div');
+            item.className = 'falling-item';
+            item.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = 15 + Math.random() * 15;
+
+            item.style.left = `${left}%`;
+            item.style.top = `-${Math.random() * 20}%`;
+            item.style.animationDuration = `${duration}s`;
+            item.style.animationDelay = `${delay}s`;
+
+            container.appendChild(item);
         }
+    }
 
-        // Llamar a la función al cargar la página
-        createFallingItems();
+    createFallingItems();
 
-        // Cuenta regresiva para la boda
-        const weddingDate = new Date("October 31, 2025 20:00:00").getTime();
-        
-        const countdown = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
-            
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById("countdown").innerHTML = "¡Hoy es el gran día!";
-            }
-        }, 1000);
-        
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Update active link
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-        
-        // Form submission
-        document.getElementById('confirmationForm').addEventListener('submit', function(e) {
+    // ⏳ Cuenta regresiva
+    const weddingDate = new Date("October 31, 2025 20:00:00").getTime();
+    const countdown = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+        if (distance < 0) {
+            clearInterval(countdown);
+            document.getElementById("countdown").innerHTML = "¡Hoy es el gran día!";
+        }
+    }, 1000);
+
+    // 🎯 Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const companion = document.getElementById('companion').value;
-            const phone = document.getElementById('phone').value;
-            
-            // In a real application, you would send this data to a server
-            // Here we'll just show an alert
-            alert(`¡Gracias por confirmar, ${name}!${companion ? `\n\nTu acompañante: ${companion}` : ''}\n\nTe contactaremos al ${phone} si hay alguna novedad.\n\n¡Nos vemos el 31 de octubre!`);
-            
-            // Reset form
-            this.reset();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+
+            // Actualizar estado activo
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
         });
-        
-        // Navbar effect on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    });
+
+    // 📩 Confirmación del formulario
+    document.getElementById('confirmationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const companion = document.getElementById('companion').value;
+        const phone = document.getElementById('phone').value;
+
+        alert(`¡Gracias por confirmar, ${name}!${companion ? `\n\nTu acompañante: ${companion}` : ''}\n\nTe contactaremos al ${phone} si hay alguna novedad.\n\n¡Nos vemos el 31 de octubre!`);
+        this.reset();
+    });
+
+    // 📏 Sombra dinámica en scroll
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        navbar.style.boxShadow = window.scrollY > 100 ? '0 5px 15px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0, 0, 0, 0.1)';
+    });
+
+    // ✨ Animaciones al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-        
-        // Animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        // Apply animation to sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = 0;
-            section.style.transform = 'translateY(50px)';
-            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(section);
-        });
-    </script>
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(50px)';
+        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(section);
+    });
+});
+</script>
 </body>
 </html>
