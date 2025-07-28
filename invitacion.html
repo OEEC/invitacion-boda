@@ -1022,18 +1022,18 @@
                         <label for="name">Tu nombre completo *</label>
                         <input type="text" id="name" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="companion">Nombre de tu acompañante <span class="optional">(opcional)</span></label>
                         <input type="text" id="companion">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="phone">Número de teléfono *</label>
+                        <label for="phone">Tu número de teléfono *</label>
                         <input type="tel" id="phone" required>
                     </div>
-                    
-                    <button type="submit" class="form-submit">Confirmar Asistencia</button>
+
+                    <button type="submit" class="form-submit">Confirmar Asistencia por WhatsApp</button>
                 </form>
             </div>
         </div>
@@ -1207,6 +1207,50 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.addEventListener('click', iniciarMusica);
     // Permitir iniciar música al desplazarse
     window.addEventListener('scroll', iniciarMusica);
+
+    const form = document.getElementById('confirmationForm');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Obtener valores del formulario
+        const name = document.getElementById('name').value;
+        const companion = document.getElementById('companion').value;
+        const phone = document.getElementById('phone').value;
+        
+        // Validar campos obligatorios
+        if (!name || !phone) {
+            alert('Por favor completa los campos obligatorios (*)');
+            return;
+        }
+        
+        // Crear mensaje para WhatsApp
+        let message = `¡Hola Oscar y Sol! Soy ${name} y quiero confirmar mi asistencia a su boda.\n`;
+        message += `*Mi teléfono:* ${phone}\n`;
+        
+        if (companion) {
+            message += `*Vendré acompañado de:* ${companion}\n`;
+        } else {
+            message += `*Asistiré solo(a)*\n`;
+        }
+        
+        message += `¡Estoy muy emocionado(a) por celebrar con ustedes!`;
+        
+        // Número de teléfono de destino (reemplaza con tu número real)
+        const phoneNumber = "528714134677"; // Ejemplo: +52 123 456 7890
+        
+        // Crear enlace de WhatsApp
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        // Abrir enlace en nueva pestaña
+        window.open(whatsappUrl, '_blank');
+        
+        // Resetear formulario (opcional)
+        form.reset();
+        
+        // Mostrar mensaje de confirmación
+        alert('¡Gracias por confirmar! Se abrirá WhatsApp para enviar tu confirmación.');
+    });
 });
 </script>
 </body>
