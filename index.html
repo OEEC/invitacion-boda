@@ -73,23 +73,38 @@
             font-style: normal;
         }
         /********* Boton de musica *************/
-        .mute-btn {
-            transition: transform 0.3s ease, background-color 0.3s;
+        .scroll-play-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            z-index: 10000;
+            display: none;
+            animation: fadeInOut 2s infinite;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-
-        .mute-btn:hover {
-            transform: scale(1.1);
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
         }
-
-        /* Animación de pulso cuando está muteado */
-        .mute-btn.muted {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 50, 50, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 50, 50, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 50, 50, 0); }
+        
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #5d4037);
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.3s ease;
         }
                 
         /********* Decoración otoñal para boda *************/
@@ -782,12 +797,19 @@
 </head>
 <body>
     <!-- Audio player -->
+    <!-- Audio player -->
     <audio id="bg-music" loop>
         <source src="resources/sound/The_Rains_of_Castamere.mp3" type="audio/mpeg">
         Tu navegador no soporta audio.
     </audio>
 
     <button id="mute-button" class="mute-btn">🔇</button> <!-- Icono inicial muteado -->
+    
+    <!-- Barra de progreso de scroll -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Indicador de auto play -->
+    <div class="scroll-play-indicator">La música se activará al desplazarse</div>
 
         <!-- Decoración otoñal -->
     <div class="falling-background"></div>
@@ -1171,44 +1193,80 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 🎵 Música de fondo y botón de silencio - VERSIÓN CORREGIDA
-    const audio = document.getElementById("bg-music");
-    const muteBtn = document.getElementById("mute-button");
-    
-    // Inicialmente el audio está muteado
-    audio.volume = 0.5;
-    audio.muted = true;
-    
-    // Función para iniciar la música con interacción del usuario
-    function iniciarMusica() {
-        // Solo intentar iniciar si está muteado
-        if (audio.muted) {
-            audio.play().then(() => {
-                console.log("Audio reproduciéndose");
-                audio.muted = false;
-                muteBtn.textContent = "🔈"; // Cambiar a icono de sonido
-            }).catch((e) => {
-                console.log("Error al iniciar audio:", e);
+            const audio = document.getElementById("bg-music");
+            const muteBtn = document.getElementById("mute-button");
+            const scrollIndicator = document.querySelector('.scroll-play-indicator');
+            const scrollProgress = document.querySelector('.scroll-progress');
+            let audioStarted = false;
+            let scrollTriggered = false;
+            
+            // Función para iniciar la música
+            function startAudio() {
+                if (audioStarted) return;
+                
+                audioStarted = true;
+                
+                audio.play().then(() => {
+                    console.log("Audio iniciado correctamente");
+                    audio.muted = false;
+                    muteBtn.textContent = "🔈";
+                    
+                    // Ocultar el indicador después de iniciar
+                    setTimeout(() => {
+                        scrollIndicator.style.display = 'none';
+                    }, 2000);
+                }).catch((e) => {
+                    console.log("Error al iniciar audio:", e);
+                    audioStarted = false;
+                });
+            }
+            
+            // Control de scroll para activar música
+            window.addEventListener('scroll', function() {
+                // Actualizar barra de progreso
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (scrollTop / scrollHeight) * 100;
+                scrollProgress.style.width = scrolled + '%';
+                
+                // Mostrar indicador si aún no se ha iniciado el audio
+                if (!audioStarted && !scrollTriggered && scrolled > 10) {
+                    scrollIndicator.style.display = 'block';
+                    scrollTriggered = true;
+                    
+                    // Intentar iniciar audio después de mostrar el indicador
+                    setTimeout(() => {
+                        if (!audioStarted) {
+                            startAudio();
+                        }
+                    }, 1500);
+                }
             });
-        }
-    }
+            
+            // Permitir iniciar música al hacer clic en cualquier parte
+            document.body.addEventListener('click', function() {
+                if (!audioStarted) {
+                    startAudio();
+                }
+            });
+            
+            // Controlador para el botón de mute
+            muteBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                audio.muted = !audio.muted;
+                muteBtn.textContent = audio.muted ? "🔇" : "🔈";
+                
+                // Si está muteado y el usuario quiere sonido, iniciar
+                if (!audio.muted && audio.paused && !audioStarted) {
+                    startAudio();
+                }
+            });
+            
+            // Inicializar estado de audio
+            audio.volume = 0.5;
+            audio.muted = true;
 
-    // Controlador para el botón de mute
-    muteBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        audio.muted = !audio.muted;
-        muteBtn.textContent = audio.muted ? "🔇" : "🔈";
-        
-        // Si está muteado y el usuario quiere sonido, iniciar
-        if (!audio.muted && audio.paused) {
-            iniciarMusica();
-        }
-    });
-
-    // Permitir iniciar música al hacer clic en cualquier parte
-    document.body.addEventListener('click', iniciarMusica);
-    // Permitir iniciar música al desplazarse
-    window.addEventListener('scroll', iniciarMusica);
-
+    // Formulario de confirmación
     const form = document.getElementById('confirmationForm');
     
     form.addEventListener('submit', function(e) {
