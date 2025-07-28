@@ -71,7 +71,26 @@
             font-weight: 400;
             font-style: normal;
         }
-        
+        /********* Boton de musica *************/
+        .mute-btn {
+            transition: transform 0.3s ease, background-color 0.3s;
+        }
+
+        .mute-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animación de pulso cuando está muteado */
+        .mute-btn.muted {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 50, 50, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 50, 50, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 50, 50, 0); }
+        }
+                
         /********* Decoración otoñal para boda *************/
         .falling-background {
             position: fixed;
@@ -761,18 +780,26 @@
     </style>
 </head>
 <body>
+    <!-- Audio player -->
+    <audio id="bg-music" loop>
+        <source src="resources/sound/The_Rains_of_Castamere.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+
+    <button id="mute-button" class="mute-btn">🔇</button> <!-- Icono inicial muteado -->
+
         <!-- Decoración otoñal -->
     <div class="falling-background"></div>
-    <!-- Hero Section con imagen centrada -->
-<section class="hero" id="inicio">
-    <div class="hero-image-container">
-        <div class="hero-image"></div>
-        <div class="hero-content">
-            <h1 class="hero-title fleur-de-leah-regular">Oscar <span class="amp">&</span> Sol</h1>
-            <div class="hero-date kings-regular">31 DE OCT 2025</div>
+        <!-- Hero Section con imagen centrada -->
+    <section class="hero" id="inicio">
+        <div class="hero-image-container">
+            <div class="hero-image"></div>
+            <div class="hero-content">
+                <h1 class="hero-title fleur-de-leah-regular">Oscar <span class="amp">&</span> Sol</h1>
+                <div class="hero-date kings-regular">31 DE OCT 2025</div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Navbar - CORREGIDA -->
     <nav class="navbar">
@@ -864,53 +891,21 @@
         <div class="container">
             <div class="section-title">
                 <h2>Código de Vestimenta</h2>
-                <p>Ayúdanos creando una paleta de colores armoniosa</p>
+                <p>Por favor, evita los siguientes colores:</p>
             </div>
             <div class="colors-container">
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #DCCAA8;"></div>
-                    <div class="color-name">Arena</div>
+                    <div class="color-sample" style="background-color: #5D6532;"></div>
+                    <div class="color-name">Verde militar</div>
                 </div>
                 <div class="color-card">
-                    <div class="color-sample" style="background-color: #ADD8E6;"></div>
-                    <div class="color-name">Azul claro</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #000080;"></div>
-                    <div class="color-name">Azul marino clásico</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #1A237E ;"></div>
-                    <div class="color-name">Azul marino suave</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #F5F5DC;"></div>
-                    <div class="color-name">Beige</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #A67B5B;"></div>
-                    <div class="color-name">Café claro</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #D4A017;"></div>
-                    <div class="color-name">Mostaza</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #000000;"></div>
-                    <div class="color-name">Negro</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #FFA07A;"></div>
-                    <div class="color-name">Salmón claro</div>
-                </div>
-                <div class="color-card">
-                    <div class="color-sample" style="background-color: #E2725B;"></div>
-                    <div class="color-name">Terracota</div>
+                    <div class="color-sample" style="background-color: #FFF;"></div>
+                    <div class="color-name">Blanco</div>
                 </div>
             </div>
             <div class="dress-code-note">
-                <p><strong>Formalidad:</strong> Elegante de noche</p>
-                <p><strong>Nota:</strong> Evitar colores brillantes o neón para mantener la estética otoñal</p>
+            <p><strong>Formalidad:</strong> Elegante de noche.</p>
+            <p><strong>Nota:</strong> Todos los demás colores están permitidos.</p>
             </div>
         </div>
     </section>
@@ -1173,6 +1168,45 @@ document.addEventListener("DOMContentLoaded", function () {
         section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         observer.observe(section);
     });
+
+    // 🎵 Música de fondo y botón de silencio - VERSIÓN CORREGIDA
+    const audio = document.getElementById("bg-music");
+    const muteBtn = document.getElementById("mute-button");
+    
+    // Inicialmente el audio está muteado
+    audio.volume = 0.5;
+    audio.muted = true;
+    
+    // Función para iniciar la música con interacción del usuario
+    function iniciarMusica() {
+        // Solo intentar iniciar si está muteado
+        if (audio.muted) {
+            audio.play().then(() => {
+                console.log("Audio reproduciéndose");
+                audio.muted = false;
+                muteBtn.textContent = "🔈"; // Cambiar a icono de sonido
+            }).catch((e) => {
+                console.log("Error al iniciar audio:", e);
+            });
+        }
+    }
+
+    // Controlador para el botón de mute
+    muteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? "🔇" : "🔈";
+        
+        // Si está muteado y el usuario quiere sonido, iniciar
+        if (!audio.muted && audio.paused) {
+            iniciarMusica();
+        }
+    });
+
+    // Permitir iniciar música al hacer clic en cualquier parte
+    document.body.addEventListener('click', iniciarMusica);
+    // Permitir iniciar música al desplazarse
+    window.addEventListener('scroll', iniciarMusica);
 });
 </script>
 </body>
