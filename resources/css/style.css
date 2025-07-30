@@ -1,4 +1,4 @@
-        :root {
+:root {
             --primary-color: #f8f0e5;
             --secondary-color: #eaddd0;
             --accent-color: #d2b48c;
@@ -92,76 +92,73 @@
 
         /* Hero Section con imagen centrada */
         .hero {
-            padding-top: 2%;
-            padding-bottom: 2%;
-            position: relative;
             width: 100%;
             height: 100vh;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Contenedor que agrupa imagen y texto */
+        /* Contenedor centrado con tamaño fijo */
         .hero-image-container {
             position: relative;
-            width: 100%;
-            height: 100%;
+            width: 500px;
+            height: 499px;
         }
 
-        /* Imagen de fondo */
+        /* Imagen de fondo con efecto blur */
         .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://invitacion-boda-ax2.pages.dev/resources/img/couple.png') center/contain no-repeat;
+            background-image: url('../img/couple.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 24px;
+            transition: filter 1.5s ease;
+            filter: blur(0);
             z-index: 1;
-            opacity: 1;
-            filter: blur(1px) brightness(0.5);
         }
 
-        /* Contenido sobre la imagen */
+        .hero-image.blur {
+            filter: blur(3px);
+        }
+
+        /* Texto centrado encima de la imagen */
         .hero-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 2;
             text-align: center;
-            color: #d4af37;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 2;
         }
 
-        /* Título */
+        .hero-content.visible {
+            opacity: 1;
+        }
+
         .hero-title {
-            font-size: 4rem;
+            font-size: 3.2rem;
             margin-bottom: 10px;
-            color: inherit;
-            line-height: 1.1;
-            letter-spacing: 2px;
+            color: white;
             text-shadow: 0 0 8px #d4af37, 0 0 12px #d4af37, 0 0 16px #fff;
         }
 
-        /* Ampersand especial */
         .amp {
-            color: var(--text-color);
             padding: 0 15px;
+            color: var(--text-color, white);
         }
 
-        /* Fecha */
         .hero-date {
             font-size: 2rem;
-            letter-spacing: 8px;
-            margin-top: 20px;
-            color: inherit;
-            font-weight: 400;
+            letter-spacing: 4px;
+            color: #d4af37;
             text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-            padding: 10px 30px;
+            padding: 5px 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
-
         .hero-date::before,
         .hero-date::after {
             position: absolute;
@@ -707,6 +704,52 @@
 
         .story-content p {
             margin-bottom: 25px;
+        }
+
+        /* Poema Section */
+        .poema-section .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 32px 0;
+        }
+
+        .img-poem img {
+            max-width: 320px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            display: block;
+        }
+
+        .poema-text {
+            max-width: 420px;
+            font-size: 1.6rem;
+            color: #5D6532;
+            line-height: 1.7;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 24px 28px;
+            margin: 0;
+        }
+
+        /* Responsive para móvil */
+        @media (max-width: 768px) {
+            .poema-section .container {
+                flex-direction: column;
+                gap: 24px;
+                padding: 18px 0;
+            }
+            .poema-text {
+                padding: 16px 12px;
+                font-size: 1rem;
+            }
+            .img-poem img {
+                max-width: 90vw;
+            }
         }
 
         /* Reception */

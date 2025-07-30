@@ -112,7 +112,7 @@
     </section>
 
     <!-- Our Story Section -->
-    <section class="section" id="nuestra-historia">
+    <!-- <section class="section" id="nuestra-historia">
         <div class="container">
             <div class="section-title">
                 <h2>Nuestra Historia</h2>
@@ -123,6 +123,27 @@
                 <p>Lo que empezó como una charla casual se convirtió en horas de conversación que no querían terminar. Descubrimos que ambos amamos la montaña, la buena comida y los perros. Pasaron semanas de citas en museos, caminatas por el parque y noches de cine.</p>
                 <p>Nuestro momento más especial fue durante un viaje a Santorini, donde Oscar se arrodilló al atardecer frente al mar Egeo y me pidió que pasara el resto de mi vida con él. Las lágrimas, la emoción y el "sí" más grande de mi vida hicieron de ese momento algo mágico.</p>
                 <p>Ahora, queremos compartir nuestro día más importante con las personas que más amamos. ¡Esperamos verte el 31 de octubre para celebrar juntos!</p>
+            </div>
+        </div>
+    </section> -->
+    <!-- Poema section-->
+    <section class="section poema-section" id="poema">
+        <div class="container">
+            <div class="img-poem">
+                <img src="resources/img/poema.png" alt="Poema de amor">
+            </div>
+            <div class="poema-text kings-regular">
+                <p>¡Oh, luna de octubre, tan llena de magia,
+                    tus ojos reflejan promesas que enlazan!</p>
+
+                <p>Y el otoño eterno, el aura y la brisa,
+                    nos jura un amor sin prisa,
+                    que arde, que es fuerte,
+                    un amor más allá de la muerte.</p>
+
+                <p>¡Oh, luna de octubre!, que caiga la noche,
+                    que el viento murmure,
+                    que el alma celebre lo que el amor jure.</p>
             </div>
         </div>
     </section>
@@ -278,7 +299,7 @@
     <div class="container">
         <div class="section-title">
         <h2>Confirmar Asistencia</h2>
-        <p>Por favor, confirma tu presencia antes del 15 de octubre</p>
+        <p>Por favor, confirma tu presencia antes del 31 de octubre</p>
         </div>
         <div class="form-container">
         <form id="confirmationForm">
@@ -336,6 +357,19 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+    // 🌟 Efecto de desenfoque y aparición de contenido
+    const heroImg = document.querySelector('.hero-image');
+    const heroContent = document.querySelector('.hero-content');
+
+    // Esperar 2 segundos, luego aplicar blur
+    setTimeout(() => {
+        heroImg.classList.add('blur');
+    }, 2000);
+
+    // Esperar un poco más y mostrar el texto
+    setTimeout(() => {
+        heroContent.classList.add('visible');
+    }, 3000);
 
     // 🍁 Elementos cayendo dinámicamente
     function createFallingItems() {
