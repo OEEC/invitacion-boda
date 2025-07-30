@@ -438,16 +438,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ✉️ Mensaje personalizado de WhatsApp
-    let message = `¡Hola Oscar y Sol! Soy ${name} y quiero confirmar mi asistencia a su boda.`;
-    message += `📞 *Mi teléfono:* ${phone}`;
+    let message = `¡Hola Oscar y Sol! Soy ${name} y quiero confirmar mi asistencia a su boda.\n`;
+    message += `📞 *Mi teléfono:* ${phone}\n`;
 
     if (companion) {
-      message += `👫 *Vendré acompañado de:* ${companion}`;
+      message += `👫 *Vendré acompañado de:* ${companion}\n`;
     } else {
-      message += `🙂 *Asistiré solo(a)*`;
+      message += `🙂 *Asistiré solo(a)*\n`;
     }
 
-    message += `🎉 ¡Estoy muy emocionado(a) por celebrar con ustedes!`;
+    message += `\n🎉 ¡Estoy muy emocionado(a) por celebrar con ustedes!`;
 
     // Número de WhatsApp destino (sin espacios ni signos, con código país)
     const phoneNumber = "528714134677"; // ejemplo México
