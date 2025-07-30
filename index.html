@@ -438,14 +438,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ✉️ Mensaje personalizado de WhatsApp
-    let message = `¡Hola Oscar y Sol! Soy ${name} y quiero confirmar mi asistencia a su boda.\n`;
-    message += `📞 *Mi teléfono:* ${phone}\n`;
-
+    let message = `¡Hola Oscar y Sol!\n Soy *${name}* y quiero confirmar mi asistencia a su boda.\n`;
     if (companion) {
       message += `👫 *Vendré acompañado de:* ${companion}\n`;
     } else {
       message += `🙂 *Asistiré solo(a)*\n`;
     }
+    message += `📞 *Mi teléfono:* ${phone}\n`;
+
 
     message += `\n🎉 ¡Estoy muy emocionado(a) por celebrar con ustedes!`;
 
