@@ -1072,11 +1072,11 @@
 
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .hero-date {
-                font-size: 1.5rem;
+                font-size: 1.7em;
                 letter-spacing: 4px;
                 padding: 8px 20px;
             }
@@ -1146,11 +1146,11 @@
 
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.3rem;
             }
 
             .hero-date {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 letter-spacing: 2px;
                 padding: 6px 15px;
             }
