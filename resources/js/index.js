@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Botón de música 1
     const sound = new Howl({
-        src: ['resources/sound/The_Rains_of_Castamere.mp3'],
+        src: ['resources/sound/todo_en_mi_vida.mp3'],
         loop: true,
         volume: 0.5,
         html5: true,
@@ -188,62 +188,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-        // Botón de música 2
-    const sound2 = new Howl({
-        src: ['resources/sound/hammer_squre.mp3'],
-        loop: true,
-        volume: 0.5,
-        html5: true,
-        mute: false
-    });
-
-    let musicaIniciada2 = false;
-    const musicBtn2 = document.querySelector('#botón2');
-
-    musicBtn2.addEventListener("click", () => {
-        if (!musicaIniciada2) {
-            sound2.play();
-            musicBtn2.classList.add('active');
-            musicaIniciada2 = true;
-        } else {
-            const isMuted2 = sound2.mute();
-            sound2.mute(!isMuted2);
-            // Cambia el estado visual si lo deseas:
-            if (!isMuted2) {
-                musicBtn2.classList.remove('active');
-            } else {
-                musicBtn2.classList.add('active');
-            }
-        }
-    });
-
-            // Botón de música 3 musicBtn3 
-    const sound3 = new Howl({
-        src: ['resources/sound/todo_en_mi_vida.mp3'],
-        loop: true,
-        volume: 0.5,
-        html5: true,
-        mute: false
-    });
-
-    let musicaIniciada3 = false;
-    const musicBtn3 = document.querySelector('#botón3');
-
-    musicBtn3.addEventListener("click", () => {
-        if (!musicaIniciada3) {
-            sound3.play();
-            musicBtn3.classList.add('active');
-            musicaIniciada3 = true;
-        } else {
-            const isMuted3 = sound3.mute();
-            sound3.mute(!isMuted3);
-            // Cambia el estado visual si lo deseas:
-            if (!isMuted3) {
-                musicBtn3.classList.remove('active');
-            } else {
-                musicBtn3.classList.add('active');
-            }
-        }
-    });
-
 });
