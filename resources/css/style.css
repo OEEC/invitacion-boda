@@ -857,6 +857,10 @@
             margin: 0;
         }
 
+        .poema-text p {
+            text-align: center;
+        }
+
         /* Responsive para móvil */
         @media (max-width: 768px) {
             .poema-section .container {
