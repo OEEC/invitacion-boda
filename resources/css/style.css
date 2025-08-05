@@ -157,7 +157,7 @@
             color: #d4af37;
             text-transform: uppercase;
             padding: 5px 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 8);
         }
         .hero-date::before,
         .hero-date::after {
@@ -1051,6 +1051,21 @@
             font-size: 1.2rem;
             color: var(--dark-color);
             margin-bottom: 10px;
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-time img {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px; /* espacio entre icono y hora */
         }
 
         /* Gallery */
