@@ -157,7 +157,7 @@
             color: #d4af37;
             text-transform: uppercase;
             padding: 5px 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.10);
         }
         .hero-date::before,
         .hero-date::after {
