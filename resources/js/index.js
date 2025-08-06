@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     message += `\n🎉 ¡Estoy muy emocionado(a) por celebrar con ustedes!`;
 
     // Número de WhatsApp destino (sin espacios ni signos, con código país)
-    const phoneNumber = "528714134677"; // ejemplo México
+    const phoneNumber = "5287016922732"; // ejemplo México
 
     // Crear enlace
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

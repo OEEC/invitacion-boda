@@ -1053,6 +1053,21 @@
             margin-bottom: 10px;
         }
 
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-time img {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px; /* espacio entre icono y hora */
+        }
+
         /* Gallery */
         .gallery-grid {
             display: grid;
