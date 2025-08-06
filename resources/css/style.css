@@ -943,6 +943,23 @@
             transform: translateY(-5px);
         }
 
+        .park-map-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 40px;
+            background: var(--dark-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .park-map-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
         /* Dress Code */
         .dress-code {
             background: rgba(234, 221, 208, 0.5);
@@ -1244,6 +1261,12 @@
                 gap: 0.5rem;
             }
 
+            
+            .park-map-btn {
+                padding: 10px 20px;
+
+            }
+
             .nav-menu.active {
                 display: flex;
             }
@@ -1305,6 +1328,11 @@
 
             .section-title h2 {
                 font-size: 2.2rem;
+            }
+
+                        
+            .park-map-btn {
+                padding: 10px 20px;
             }
 
             .countdown-item {
