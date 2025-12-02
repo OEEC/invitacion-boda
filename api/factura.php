@@ -59,3 +59,4 @@ if ($coincide) {
     http_response_code(404);
     echo json_encode(["mensaje" => "No se encontró ninguna factura con los criterios especificados."]);
 }
+?>
