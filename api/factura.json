@@ -1,0 +1,7 @@
+{
+   "factura": {
+      "tienda": "12",
+      "ticket": 56000,
+      "activo": true
+   }
+}
